@@ -1,0 +1,4 @@
+# requirements.txt
+psycopg2-binary
+streamlit
+openai

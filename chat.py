@@ -4,7 +4,6 @@ import psycopg2
 import json
 import re
 import logging
-from dotenv import load_dotenv
 from openai import OpenAI
 from urllib.parse import urlencode
 
@@ -17,9 +16,8 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Load environment variables
-load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-DATABASE_URL = os.getenv("DATABASE_URL")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 # Initialize OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)

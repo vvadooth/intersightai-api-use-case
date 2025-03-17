@@ -63,7 +63,6 @@ def generate_curl_command(call):
     query_params = call.get("query_params", None)
     body = call.get("body", None)
     
-    # Base URL (replace with your actual Intersight base URL if needed)
     base_url = "https://intersight.com"
     url = f"{base_url}{path}"
     
@@ -246,7 +245,6 @@ if prompt := st.chat_input("Enter your question:"):
                     response += f"- {param}: {value}\n"
             if 'body' in call and call['body']:
                 response += "**Request Body**:\n```json\n" + json.dumps(call['body'], indent=2) + "\n```\n"
-            # Add cURL command in a cool code block
             curl_command = generate_curl_command(call)
             response += "**cURL Command**:\n"
             response += f"```bash\n{curl_command}\n```\n"

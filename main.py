@@ -32,7 +32,7 @@ def get_openapi_spec_paths(spec_file_path):
 def get_embedding(text):
     try:
         response = client.embeddings.create(
-            model="text-embedding-3-small",  # Using the model you specified
+            model="text-embedding-3-small", 
             input=text
         )
         return response.data[0].embedding
@@ -76,7 +76,6 @@ def populate_database(paths):
     for i, path_data in enumerate(paths, 1):
         print(f"Processing endpoint {i}/{total_endpoints}: {path_data['method'].upper()} {path_data['path']}")
         
-        # Use description or summary for embedding, fallback to full content
         text_to_embed = path_data.get("description", path_data.get("summary", json.dumps(path_data)))
         try:
             embedding = get_embedding(text_to_embed)
@@ -111,7 +110,7 @@ def populate_database(paths):
 
 # Main execution
 if __name__ == "__main__":
-    # Path to your OpenAPI spec
+    # Path to OpenAPI spec
     spec_file_path = "intersight-openapi.json"
     
     # Set up database
